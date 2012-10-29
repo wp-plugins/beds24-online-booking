@@ -4,6 +4,7 @@ Tags: online booking system, booking system, online booking engine, booking engi
 Requires at least: 2.0.2
 Tested up to: 3.4.4
 License: GPLv2 or later
+Stable tag: trunk
 
 This plugin for the Beds24 online booking system lets you accept commission free online bookings directly from your Wordpress website. 
 
