@@ -1,6 +1,6 @@
 === Beds24 Online Booking ===
 Contributors: markkinchin
-Tags: online booking system, booking system, online booking engine, booking engine, availability calendar, beds24, hotel reservation system, hotel booking system, bed and breakfast, guest house, inn
+Tags: online booking system, booking system, online booking engine, booking engine, availability calendar, beds24, hotel reservation system, hotel booking system, bed and breakfast, guest house, inn, channel manager
 Requires at least: 2.0.2
 Tested up to: 3.5.2
 License: GPLv2 or later
@@ -49,6 +49,7 @@ Setup an embedded booking page
 
 = 1.0 =
 * Initial release
+
 = 1.1 =
 * iframe now has inline style max-width=100% to make responsive
 * added number of dates displayed selector
