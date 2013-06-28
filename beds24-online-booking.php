@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: This plugin for the Beds24 online booking system lets you accept commission free online bookings directly from your Wordpress website. The plugin is free to use, but you need an account with Beds24.com. The Beds24.com online booking system and channel management is suitable for any type of accommodation such as B&B's, Hotels, Motels, Hostels, Vacation Rentals, Holiday Homes and Campgrounds.
-Version: 1.0
+Version: 1.1
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -16,6 +16,10 @@ function beds24_booking_install()
 add_option("beds24_propid", '', '', 'yes');
 add_option("beds24_height", 1600, '', 'yes');
 add_option("beds24_width", 800, '', 'yes');
+add_option("beds24_numdisplayed", 5, '', 'yes');
+add_option("beds24_advancedays", 7, '', 'yes');
+add_option("beds24_numnight", 1, '', 'yes');
+add_option("beds24_numadult", 2, '', 'yes');
 }
 
 function beds24_booking_remove() 
@@ -23,6 +27,10 @@ function beds24_booking_remove()
 delete_option('beds24_propid');
 delete_option('beds24_height');
 delete_option('beds24_width');
+delete_option('beds24_numdisplayed');
+delete_option('beds24_advancedays');
+delete_option('beds24_numnight');
+delete_option('beds24_numadult');
 }
 
 add_shortcode("beds24", "beds24_booking_page");
@@ -35,7 +43,11 @@ if(isset($atts['propid']) && $atts['propid'] != "")
 	$str .= urlencode($atts['propid']);
 else
 	$str .= urlencode(get_option('beds24_propid'));
-$str .= '" width="'.get_option('beds24_width').'" height="'.get_option('beds24_height').'" frameborder="0"></iframe>';
+$str .= "&numdisplayed=".urlencode(get_option('beds24_numdisplayed'));
+$str .= "&advancedays=".urlencode(get_option('beds24_advancedays'));
+$str .= "&numnight=".urlencode(get_option('beds24_numnight'));
+$str .= "&numadult=".urlencode(get_option('beds24_numadult'));
+$str .= '" width="'.get_option('beds24_width').'" height="'.get_option('beds24_height').'" frameborder="0" style="max-width:100%;"></iframe>';
 return $str;
 }
 
@@ -60,8 +72,9 @@ function beds24_admin_page()
 <tr valign="top">
 <td style="width: 160px; padding: 5px 5px 7px 5px;">Beds24 Property Id:</td>
 <td style="padding: 5px 5px 7px 5px;">
-<input name="beds24_propid" type="text" id="beds24_propid" size=6 maxlength=100 value="<?php echo get_option('beds24_propid'); ?>" />
-<span style="font-style: italic; color: gray;"> Enter your Beds24.com Property Id.</span>
+<input name="beds24_propid" type="text" id="beds24_propid" size=6 maxlength=100 value="<?php echo get_option('beds24_propid'); ?>" /></td>
+<td style="padding: 5px 5px 7px 5px;">
+<span style="font-style: italic; color: gray;"> Enter your Beds24.com Property Id Number. You will find this in the Beds24 control panel at SETTINGS >> PROPERTIES >> DESCRPTION.</span>
 </td>
 </tr>
 <tr valign="top">
@@ -71,7 +84,8 @@ function beds24_admin_page()
 <?php for($i = 200; $i < 1200; $i += 10) { ?>
 <option value ="<?php echo $i; ?>" <?php if(get_option('beds24_width') == $i) echo "selected"; ?>><?php echo $i; ?>px</option>
 <?php } ?>
-</select> <span style="font-style: italic; color: gray;">Identify the width and height available on your wordpress page and enter them here.</span>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Enter the width of the Embedded Booking Page in pixels.</span>
 </td>
 </tr>
 <tr valign="top">
@@ -81,16 +95,63 @@ function beds24_admin_page()
 <?php for($i = 400; $i < 3000; $i += 10) { ?>
 <option value ="<?php echo $i; ?>" <?php if(get_option('beds24_height') == $i) echo "selected"; ?>><?php echo $i; ?>px</option>
 <?php } ?>
-</select>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Enter the height of the Embedded Booking Page in pixels. If you do not allow enough height the Embedded Booking Page will create a vertical scroll bar.</span>
 </td>
+</tr>
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Dates Displayed:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<select name="beds24_numdisplayed" id="beds24_numdisplayed">
+<?php for($i = 0; $i <= 14; $i += 1) { ?>
+<option value ="<?php echo $i; ?>" <?php if(get_option('beds24_numdisplayed') == $i) echo "selected"; ?>><?php echo $i; ?></option>
+<?php } ?>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Enter the number of date columns to display. Choose the number of columns to suit the width you have available.</span>
+</td>
+</tr>
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Days in Advance:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<select name="beds24_advancedays" id="beds24_advancedays">
+<?php for($i = 0; $i <= 180; $i += 1) { ?>
+<option value ="<?php echo $i; ?>" <?php if(get_option('beds24_advancedays') == $i) echo "selected"; ?>><?php echo $i; ?></option>
+<?php } ?>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">This is the number of days ahead of the current date for the default checkin date. For example if you set it to one, the default date will always be tomorrow.  shown when the page first opens. This only applies the first time the page opens, once opened or re-opened it will remember the previously selected date.</span>
+</td>
+</tr>
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Number of Nights:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<select name="beds24_numnight" id="beds24_numnight">
+<?php for($i = 1; $i <= 7; $i += 1) { ?>
+<option value ="<?php echo $i; ?>" <?php if(get_option('beds24_numnight') == $i) echo "selected"; ?>><?php echo $i; ?></option>
+<?php } ?>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">This is the default setting for the booking duration.</span>
+</td>
+</tr>
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Number of Guests:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<select name="beds24_numadult" id="beds24_numadult">
+<?php for($i = 1; $i <= 8; $i += 1) { ?>
+<option value ="<?php echo $i; ?>" <?php if(get_option('beds24_numadult') == $i) echo "selected"; ?>><?php echo $i; ?></option>
+<?php } ?>
+</select></td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">This is the default setting for the number of guests.</span>
+</td>
+</tr>
 <tr valign="top">
 <td style="padding: 5px 5px 7px 5px;"></td>
-<td style="padding: 5px 5px 7px 5px;">
+<td colspan="2" style="padding: 5px 5px 7px 5px;">
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="beds24_propid,beds24_width,beds24_height" />
+<input type="hidden" name="page_options" value="beds24_propid,beds24_width,beds24_height,beds24_numdisplayed,beds24_advancedays,beds24_numnight,beds24_numadult" />
 <input type="submit" value="<?php _e('Save Changes') ?>" />
 </td>
 </tr>
+
 </table>
 </form>
 </div>
