@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: This plugin lets you accept commission free online bookings directly from your Wordpress website. Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available at http://www.beds24.com/join.html . The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as Hotels, Motels, B&B's, Hostels, Vacation Rentals, Holiday Homes and Campgrounds as well as selling extras like Tickets or Tours.
-Version: 1.1
+Version: 1.2
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -20,6 +20,7 @@ add_option("beds24_numdisplayed", 5, '', 'yes');
 add_option("beds24_advancedays", 7, '', 'yes');
 add_option("beds24_numnight", 1, '', 'yes');
 add_option("beds24_numadult", 2, '', 'yes');
+add_option("beds24_custom", '', '', 'yes');
 }
 
 function beds24_booking_remove() 
@@ -31,6 +32,7 @@ delete_option('beds24_numdisplayed');
 delete_option('beds24_advancedays');
 delete_option('beds24_numnight');
 delete_option('beds24_numadult');
+delete_option('beds24_custom');
 }
 
 add_shortcode("beds24", "beds24_booking_page");
@@ -47,6 +49,11 @@ $str .= "&numdisplayed=".urlencode(get_option('beds24_numdisplayed'));
 $str .= "&advancedays=".urlencode(get_option('beds24_advancedays'));
 $str .= "&numnight=".urlencode(get_option('beds24_numnight'));
 $str .= "&numadult=".urlencode(get_option('beds24_numadult'));
+
+$custom = get_option('beds24_custom');
+if (strlen($custom) > 0)
+  $str .= $custom;
+
 $str .= '" width="'.get_option('beds24_width').'" height="'.get_option('beds24_height').'" frameborder="0" style="max-width:100%;"></iframe>';
 return $str;
 }
@@ -143,11 +150,21 @@ function beds24_admin_page()
 <td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">This is the default setting for the number of guests.</span>
 </td>
 </tr>
+
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Custom URL Parameters:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<input type="text" name="beds24_custom" id="beds24_custom" value="<?php echo str_replace('"', "", get_option('beds24_custom')); ?>">
+</td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Add custom parameters to the booking page URL. See <a href="http://wiki.beds24.com/index.php?title=Page/widgetwebdesign" target="_blank">here</span> for more information.
+</td>
+</tr>
+
 <tr valign="top">
 <td style="padding: 5px 5px 7px 5px;"></td>
 <td colspan="2" style="padding: 5px 5px 7px 5px;">
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="beds24_propid,beds24_width,beds24_height,beds24_numdisplayed,beds24_advancedays,beds24_numnight,beds24_numadult" />
+<input type="hidden" name="page_options" value="beds24_propid,beds24_width,beds24_height,beds24_numdisplayed,beds24_advancedays,beds24_numnight,beds24_numadult,beds24_custom" />
 <input type="submit" value="<?php _e('Save Changes') ?>" />
 </td>
 </tr>

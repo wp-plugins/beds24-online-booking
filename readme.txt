@@ -47,8 +47,8 @@ Setup an embedded booking page
 
 == Changelog ==
 
-= 1.0 =
-* Initial release
+= 1.2 =
+* custom URL parameter iption added
 
 = 1.1 =
 * iframe now has inline style max-width=100% to make responsive
@@ -56,3 +56,6 @@ Setup an embedded booking page
 * added default days in advance selector
 * added default number of nights selector
 * added default number of guests selector
+
+= 1.0 =
+* Initial release
