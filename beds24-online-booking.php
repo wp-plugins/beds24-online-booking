@@ -47,8 +47,10 @@ else
 	$str .= urlencode(get_option('beds24_propid'));
 $str .= "&numdisplayed=".urlencode(get_option('beds24_numdisplayed'));
 $str .= "&advancedays=".urlencode(get_option('beds24_advancedays'));
-$str .= "&numnight=".urlencode(get_option('beds24_numnight'));
-$str .= "&numadult=".urlencode(get_option('beds24_numadult'));
+if (get_option('beds24_numnight')>=0)
+	$str .= "&numnight=".urlencode(get_option('beds24_numnight'));
+if (get_option('beds24_numadult')>=0)
+	$str .= "&numadult=".urlencode(get_option('beds24_numadult'));
 
 $custom = get_option('beds24_custom');
 if (strlen($custom) > 0)
@@ -132,6 +134,7 @@ function beds24_admin_page()
 <td style="padding: 5px 5px 7px 5px;">Number of Nights:</td>
 <td style="padding: 5px 5px 7px 5px;">
 <select name="beds24_numnight" id="beds24_numnight">
+<option value ="-1" <?php if(get_option('beds24_numnight') == -1) echo "selected"; ?>>not specified</option>
 <?php for($i = 1; $i <= 7; $i += 1) { ?>
 <option value ="<?php echo $i; ?>" <?php if(get_option('beds24_numnight') == $i) echo "selected"; ?>><?php echo $i; ?></option>
 <?php } ?>
@@ -143,6 +146,7 @@ function beds24_admin_page()
 <td style="padding: 5px 5px 7px 5px;">Number of Guests:</td>
 <td style="padding: 5px 5px 7px 5px;">
 <select name="beds24_numadult" id="beds24_numadult">
+<option value ="-1" <?php if(get_option('beds24_numadult') == -1) echo "selected"; ?>>not specified</option>
 <?php for($i = 1; $i <= 8; $i += 1) { ?>
 <option value ="<?php echo $i; ?>" <?php if(get_option('beds24_numadult') == $i) echo "selected"; ?>><?php echo $i; ?></option>
 <?php } ?>
@@ -156,7 +160,7 @@ function beds24_admin_page()
 <td style="padding: 5px 5px 7px 5px;">
 <input type="text" name="beds24_custom" id="beds24_custom" value="<?php echo str_replace('"', "", get_option('beds24_custom')); ?>">
 </td>
-<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Add custom parameters to the booking page URL. See <a href="http://wiki.beds24.com/index.php?title=Page/widgetwebdesign" target="_blank">here</span> for more information.
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Add custom parameters to the booking page URL. Must start and separate with an &amp;. See <a href="http://wiki.beds24.com/index.php?title=Page/widgetwebdesign" target="_blank">here</span> for more information.
 </td>
 </tr>
 

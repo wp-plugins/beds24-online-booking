@@ -47,6 +47,9 @@ Setup an embedded booking page
 
 == Changelog ==
 
+= 1.3 =
+* numnight and numadult have "not specified" option to allow incoming redirects to set these via the php session
+
 = 1.2 =
 * custom URL parameter iption added
 
