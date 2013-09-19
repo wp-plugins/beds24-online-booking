@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: This plugin lets you accept commission free online bookings directly from your Wordpress website. Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available at http://www.beds24.com/join.html . The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as Hotels, Motels, B&B's, Hostels, Vacation Rentals, Holiday Homes and Campgrounds as well as selling extras like Tickets or Tours.
-Version: 1.2
+Version: 1.3
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
