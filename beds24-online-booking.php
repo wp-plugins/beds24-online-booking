@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available <a href="http://www.beds24.com/join.html" target="_blank">here</a>
-Version: 2.0
+Version: 2.0.1
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -61,23 +61,7 @@ function beds24_scripts()
 if (!session_id())
     session_start();
 
-// first get rid of previously registered variants of jquery.fancybox by other plugins or theme
-wp_deregister_script('fancybox');
-wp_deregister_script('jquery.fancybox');
-wp_deregister_script('jquery_fancybox');
-wp_deregister_script('jquery-fancybox');
-
-
 wp_enqueue_script('jquery');
-
-wp_register_script( 'jquery-fancybox', plugins_url( '/fancybox/jquery.fancybox.pack.js', __FILE__ ), array('jquery') );
-wp_enqueue_script( 'jquery-fancybox' );
-
-wp_register_script( 'jquery-fancybox-init', plugins_url( '/fancybox/jquery.fancybox.init.js', __FILE__ ), array('jquery') );
-wp_enqueue_script( 'jquery-fancybox-init' );
-
-wp_dequeue_style('fancybox');
-wp_enqueue_style('fancybox', plugins_url( '/fancybox/jquery.fancybox.css', __FILE__ ));
 
 wp_enqueue_style('beds24', plugins_url( '/theme-files/beds24.css', __FILE__ ));
 	
@@ -332,7 +316,6 @@ else
 //target=iframe
 //target=window
 //target=new
-//target=fancybox
 if (isset($atts['target']))
 	$target = $atts['target'];
 else 
@@ -449,10 +432,6 @@ else if ($target == 'new')
 	{
 	$thistarget = ' target="_blank" ';
 	}
-else if ($target == 'fancybox')
-	{
-	$linkclass = ' fancybox fancybox.iframe ';
-	}
 else //iframe
 	{
 	if ($target != 'none')
@@ -532,20 +511,6 @@ else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
 	if ($_REQUEST['showmoredetails'] < 1)
 		$output .= '$("#B24advancedsearch").hide();';
 	
-	if ($target == 'fancybox')
-		{
-		$output .= '
-	$("#beds24book'.$suffix.'").submit(function() {
-	$form = $(this);
-  $.fancybox({
-		"width": "'.$width.'px",
-		"height": "90%",
-		"href": $form.attr("action") + "?" + $form.serialize(),
-		"type": "iframe"
-		});
-	return false;
-	});';
-}
 	$output .= '});</script>';
 	}
 	
@@ -945,7 +910,6 @@ $options = array();
 $options['iframe'] = 'iframe';
 $options['window'] = 'same window';
 $options['new'] = 'new window';
-$options['fancybox'] = 'fancybox';
 ?>
 <tr valign="top">
 <td style="width: 160px; padding: 5px 5px 7px 5px;">Target:</td>
@@ -957,7 +921,7 @@ $options['fancybox'] = 'fancybox';
 </select>
 </td>
 <td style="padding: 5px 5px 7px 5px;">
-<span style="font-style: italic; color: gray;"> The target to open the booking form. "fancybox" will open the booking page in a popup, "iframe" will open the booking page as an iframe on the same page. If you want the widget to open an embedded booking page on your website choose "iframe" and add the url of the target page href="http://www.myurl.com" to the shortcode.</span>
+<span style="font-style: italic; color: gray;"> The target to open the booking form. "iframe" will open the booking page as an iframe on the same page. If you want the widget to open an embedded booking page on your website choose "iframe" and add the url of the target page href="http://www.myurl.com" to the shortcode.</span>
 </td>
 </tr>
 
@@ -1016,15 +980,6 @@ $options['fancybox'] = 'fancybox';
 <p><strong>1.1 Agency Searchbox </strong></p>
 <p>You can embed a searchbox into your Wordpress site. The searchbox will return your live availability. The results can be shown on the same or a different page or in a pop up.</p>
 <p>Use shortcodes to add a searchbox in a post, page or sidebar.</p>
-<table width="900" cellspacing="0" cellpadding="2" border="1">
-<tbody>
-<tr>
-<td>1</td>
-<td width="50%">searchbox opening results in a pop up</td>
-<td>[beds24-searchbox target="fancybox"]</td>
-</tr>
-</tbody>
-</table>
 <br>
 <br>
 <table width="900" cellspacing="0" cellpadding="2" border="1">
@@ -1109,7 +1064,6 @@ $options['fancybox'] = 'fancybox';
 </table>
 <h3>Parameters</h3>
 <p>Shortcodes can be customised. Change the values and enter the parameters into the shortcode.</p>
-<p>Example: [beds24-button target="fancybox"] adding target="fancybox to the shortcode for a booking widgets will open the booking page in a pop up. </p>
 <tbody>
 <table width="900" cellspacing="0" cellpadding="2" border="1">
 <tr>
@@ -1195,10 +1149,6 @@ $options['fancybox'] = 'fancybox';
 <tr>
 <td width="50%">open booking page in iframe on the same page</td>
 <td>target="iframe"</td>
-</tr>
-<tr>
-<td width="50%">open booking page in a pop up</td>
-<td>target="fancybox"</td>
 </tr>
 <tr>
 <td width="50%">freetext for modification of url parameters</td>

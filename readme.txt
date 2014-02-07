@@ -73,6 +73,9 @@ Yes. You may define multiple properties in Beds24.com and implement a search for
 
 == Changelog ==
 
+= 2.0.1 =
+* fancybox 2 removed due to licence issues
+
 = 2.0 =
 * multiple property and agency search box added
 * additional shortcodes for widgets added
