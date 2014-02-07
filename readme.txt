@@ -1,57 +1,89 @@
 === Beds24 Online Booking ===
 Contributors: markkinchin
-Tags: online booking system, booking system, online booking engine, booking engine, availability calendar, beds24, hotel reservation system, hotel booking system, bed and breakfast, guest house, inn, channel manager
+Tags: online booking system, booking system, online booking engine, booking engine, IBE, availability calendar, reservation calendar, beds24, hotel reservation system, hotel booking system, multi property booking system, booking button, bed and breakfast, guest house, inn, channel manager, channel management, OTA
 Requires at least: 2.0.2
-Tested up to: 3.5.2
+Tested up to: 3.8.1
 License: GPLv2 or later
 Stable tag: trunk
 
-This plugin lets you accept commission free online bookings directly from your Wordpress website. 
-
+Accept commission free online bookings from your Wordpress website. Suitable for hotels, B&B's, holiday rentals, apartments and villas. Single and multiple property capabilites.
 == Description ==
-
+=Powerful and Customisable Online Booking System=
 Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization.
+
+The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours.
 
 The plugin is free to use but you do need an account with Beds24.com. A free trial account is available at http://www.beds24.com/join.html
 
-The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as Hotels, Motels, B&B's, Hostels, Vacation Rentals, Holiday Homes and Campgrounds as well as selling extras like Tickets or Tours.
+=Features=
+*Real-time availability and commission free online bookings
+*Customisable booking widgets
+*Multiple rates and discounts
+*Multi language booking page
+*Online payments
+*Optional channel manager
 
+=Features for Hotel Groups and Agencies=
+*Agency seach box
+*Subaccounts with access control
 
 == Installation ==
-1. Download the plugin. 
-2. Unzip the plugin.
-3. Upload the folder to your WordPress plugin folder (wp-content/plugins)
-4. Go to Wordpress/Plugins
-5. Activate the Plugin
 
-You have the option to display an embedded booking page and/or a booking widget:
+Installation through WordPress control panel:
 
-Setup a booking widget
-1. In Wordpress go to Appearance/Widgets.
-2. Drag the widget to where you want to place it. 
-3. Go to Widgets in your Beds24 account.
-4. You can choose any widget you want for either the property or a room. We recommend the availability calendar, or the booking box or a booking button.
-5. Set the booking widget up how you want it. Make sure the width of the widget fits the location in Wordpress where you want to display it. 
-6. Copy the code.
-7. Go back to Wordpress and paste the code in the provided box. 
+1. Login to your WordPress account using the administrators username and password.
+2. Click the plugins icon on the left menu.
+3. Click the "Add New" button at the top of the Plugins menu.
+4. Search for "Beds24 Online Booking"
+5. Click on "Install"  
+6. When the "Plugin installed successfully" message appears, click the "Activate Plugin" link.
+5. Click on "Settings" in the left menu then on "Beds24".
+6. Enter your Beds24 ID 
+7. Choose from our selection of widgets and paste the shortcode into a post, page or sidebar.
 
-Setup an embedded booking page
-1. Go to your Beds24.com account and copy your property id from Properties/Description.
-2. Identify the width and height available on your Wordpress page to display the embedded booking page (in pixels).
-3. In Wordpress go to Settings/Beds24 Online Bookings. 
-4. Enter your property id and width and the height you want to set for your embedded booking page. 
-5. Adjust the other optional settings to suit your requirements. 
-6. Open the page where you want to display the booking page for editing. 
-7. Place this short code [beds24] where you want to display the embedded booking page. 
+Installtion via ftp:
 
+1. Download the plugin
+2. Upload the unzippd plugin folder to your WordPress plugin folder (wp-content/plugins)
+3. Go to Wordpress and click the Plugins icon on the left menu.
+4. Activate the plugin
+5. In Wordpress go click on "Settings" in the left menu then on "Beds24".
+6. Enter your Beds24 ID 
+7. Choose from our selection of widgets and paste the shortcode into a post, page or sidebar.
+
+== FAQ ==
+
+=Do I need a Beds24 account?=
+Yes. A free trial account is available at http://www.beds24.com/join.html
+
+=Will I be on a contract?=
+No. There is no minimum payment or sign-up period. Beds24 is a pre-pay, pay as you go service. You may cancel your account at any time. 
+
+=Can I customise the booking widgets and booking calendar?=
+Yes, you can fully customise the look to seamlessly fit into your site. 
+
+=Which booking sites (OTA´s) do you connect to?=
+Beds24 has two-way connections with most leading booking websites. For a complete list please see http://www.beds24.com/channel-manager.html
+
+=How do customers pay?=
+All payments go directly to the host. You can either collect payments after arrival or use one of the payment options integrated in the system to collect payments via credit card or Paypal. Alternatively you can securely collect card details and process them later through your bank or merchant account.
+
+=Can I sell multiple properties?=
+Yes. You may define multiple properties in Beds24.com and implement a search form that shows the guest a list of those available for their search criteria. 
 
 == Changelog ==
+
+= 2.0 =
+* multiple property and agency search box added
+* additional shortcodes for widgets added
+* shortcodes can be customised with parameters
+* fancy box support added
 
 = 1.3 =
 * numnight and numadult have "not specified" option to allow incoming redirects to set these via the php session
 
 = 1.2 =
-* custom URL parameter iption added
+* custom URL parameter option added
 
 = 1.1 =
 * iframe now has inline style max-width=100% to make responsive
@@ -62,3 +94,4 @@ Setup an embedded booking page
 
 = 1.0 =
 * Initial release
+
