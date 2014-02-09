@@ -15,21 +15,21 @@ The Beds24.com online booking system and channel manager is suitable for any typ
 
 The plugin is free to use but you do need an account with Beds24.com. A free trial account is available at http://www.beds24.com/join.html
 
-=Features=
-*Real-time availability and commission free online bookings
-*Customisable booking widgets
-*Multiple rates and discounts
-*Multi language booking page
-*Online payments
-*Optional channel manager
+= Features =
+* Real-time availability and commission free online bookings
+* Customisable booking widgets
+* Multiple rates and discounts
+* Multi language booking page
+* Online payments
+* Optional channel manager
 
-=Features for Hotel Groups and Agencies=
-*Agency seach box
-*Subaccounts with access control
+= Features for Hotel Groups and Agencies =
+* Agency seach box
+* Subaccounts with access control
 
 == Installation ==
 
-Installation through WordPress control panel:
+= Installation through WordPress control panel: =
 
 1. Login to your WordPress account using the administrators username and password.
 2. Click the plugins icon on the left menu.
@@ -41,7 +41,7 @@ Installation through WordPress control panel:
 6. Enter your Beds24 ID 
 7. Choose from our selection of widgets and paste the shortcode into a post, page or sidebar.
 
-Installtion via ftp:
+= Installtion via ftp: =
 
 1. Download the plugin
 2. Upload the unzippd plugin folder to your WordPress plugin folder (wp-content/plugins)
@@ -51,24 +51,24 @@ Installtion via ftp:
 6. Enter your Beds24 ID 
 7. Choose from our selection of widgets and paste the shortcode into a post, page or sidebar.
 
-== FAQ ==
+== Frequently Asked Questions ==
 
-=Do I need a Beds24 account?=
+= Do I need a Beds24 account? =
 Yes. A free trial account is available at http://www.beds24.com/join.html
 
-=Will I be on a contract?=
+= Will I be on a contract? =
 No. There is no minimum payment or sign-up period. Beds24 is a pre-pay, pay as you go service. You may cancel your account at any time. 
 
-=Can I customise the booking widgets and booking calendar?=
+= Can I customise the booking widgets and booking calendar? =
 Yes, you can fully customise the look to seamlessly fit into your site. 
 
-=Which booking sites (OTA´s) do you connect to?=
+= Which booking sites (OTA´s) do you connect to? =
 Beds24 has two-way connections with most leading booking websites. For a complete list please see http://www.beds24.com/channel-manager.html
 
-=How do customers pay?=
+= How do customers pay? =
 All payments go directly to the host. You can either collect payments after arrival or use one of the payment options integrated in the system to collect payments via credit card or Paypal. Alternatively you can securely collect card details and process them later through your bank or merchant account.
 
-=Can I sell multiple properties?=
+= Can I sell multiple properties? =
 Yes. You may define multiple properties in Beds24.com and implement a search form that shows the guest a list of those available for their search criteria. 
 
 == Changelog ==

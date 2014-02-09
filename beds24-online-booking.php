@@ -590,8 +590,6 @@ else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
 			$output .=  "Something went wrong: $error_message";
 			return $output;
 		} else {
-//$output .= htmlentities($response['body']);
-//echo $response['body'];
 			$result = new SimpleXMLElement($response['body']);
 			$xmlowner = $result->owner;
 			if (count($xmlowner->property)==0)
@@ -980,12 +978,10 @@ $options['new'] = 'new window';
 <p><strong>1.1 Agency Searchbox </strong></p>
 <p>You can embed a searchbox into your Wordpress site. The searchbox will return your live availability. The results can be shown on the same or a different page or in a pop up.</p>
 <p>Use shortcodes to add a searchbox in a post, page or sidebar.</p>
-<br>
-<br>
 <table width="900" cellspacing="0" cellpadding="2" border="1">
 <tbody>
 <tr>
-<td>2</td>
+<td>1</td>
 <td width="50%">searchbox displaying the search results on the same page</td>
 <td>[beds24-searchbox]</td>
 </tr>
@@ -1001,7 +997,7 @@ $options['new'] = 'new window';
 <table width="900" cellspacing="0" cellpadding="2" border="1">
 <tbody>
 <tr>
-<td>3</td>
+<td>2</td>
 <td width="50%">searchbox displaying the search results on a defined page page. If you want to show the results on another page add the url.</td>
 <td>[beds24-searchbox href="http://mywebsite/wordpress/?page_id=xy"]</td>
 </tr>
