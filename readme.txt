@@ -8,7 +8,7 @@ Stable tag: trunk
 
 Accept commission free online bookings from your Wordpress website. Suitable for hotels, B&B's, holiday rentals, apartments and villas. Single and multiple property capabilites.
 == Description ==
-=Powerful and Customisable Online Booking System=
+= Powerful and Customisable Online Booking System =
 Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization.
 
 The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours.
@@ -72,6 +72,9 @@ All payments go directly to the host. You can either collect payments after arri
 Yes. You may define multiple properties in Beds24.com and implement a search form that shows the guest a list of those available for their search criteria. 
 
 == Changelog ==
+
+= 2.0.2 =
+* supports opening embedded booking page at first available date
 
 = 2.0.1 =
 * fancybox 2 removed due to licence issues

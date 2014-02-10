@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available <a href="http://www.beds24.com/join.html" target="_blank">here</a>
-Version: 2.0.1
+Version: 2.0.2
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -79,6 +79,7 @@ add_shortcode("beds24-link", "beds24_booking_page_link");
 add_shortcode("beds24-button", "beds24_booking_page_button");
 add_shortcode("beds24-box", "beds24_booking_page_box");
 add_shortcode("beds24-searchbox", "beds24_booking_page_searchbox");
+add_shortcode("beds24-embed", "beds24_booking_page_embed");
 
 
 add_action( 'admin_enqueue_scripts', 'beds24_admin_scripts' );
@@ -128,6 +129,15 @@ if (!isset($atts['type']))
   $atts['type'] = 'searchbox';
 if (!isset($atts['fontsize'])) 
   $atts['fontsize'] = '20';
+return beds24_booking_page($atts);
+}
+
+function beds24_booking_page_embed($atts)
+{
+if (!isset($atts['type'])) 
+  $atts['type'] = 'embed';
+if (!isset($atts['advancedays'])) 
+  $atts['advancedays'] = '-1';
 return beds24_booking_page($atts);
 }
 
@@ -222,6 +232,7 @@ else
 	$urlhidefooter = '';
 
 //checkin or show this many days from now
+$checkin = false;
 if (isset($_REQUEST['checkin']))
 	$checkin = $_REQUEST['checkin'];
 else if (isset($_REQUEST['fdate_date']) && isset($_REQUEST['fdate_monthyear']))	
@@ -233,22 +244,27 @@ else if (isset($_SESSION['beds24-checkin']))
 else if (isset($atts['advancedays']))
 	{
 	$advancedays = $atts['advancedays'];
-	$checkin = date('Y-m-d', strtotime('+'.$advancedays.' days'));
+	if ($advancedays>=0)
+	  $checkin = date('Y-m-d', strtotime('+'.$advancedays.' days'));
 	}
 else 
 	{
 	$advancedays = get_option('beds24_advancedays');
-	$checkin = date('Y-m-d', strtotime('+'.$advancedays.' days'));
+	if ($advancedays>=0)
+	  $checkin = date('Y-m-d', strtotime('+'.$advancedays.' days'));
 	}
 	
-$checkin = date('Y-m-d', strtotime($checkin));
-if ($checkin < date('Y-m-d'))
-	$checkin = date('Y-m-d');
-$_SESSION['beds24-checkin'] = $checkin;
-if (isset($checkin))
-	$urlcheckin = "&amp;checkin=".urlencode($checkin);
+	
+if ($checkin)
+  {
+  $checkin = date('Y-m-d', strtotime($checkin));
+  if ($checkin < date('Y-m-d'))
+    $checkin = date('Y-m-d');
+  $_SESSION['beds24-checkin'] = $checkin;
+  $urlcheckin = "&amp;checkin=".urlencode($checkin);
+  }
 else
-	$urlcheckin = '';
+  $urlcheckin = '';
 	
 //default number of nights
 if (isset($_REQUEST['numnight']))
@@ -722,7 +738,7 @@ $url = plugins_url();
 </tr>
 <tr>
 <td width="50%">embedded booking page</td>
-<td>[beds24]</td>
+<td>[beds24-embed]</td>
 </tr>
 </tbody>
 </table>          
@@ -825,6 +841,7 @@ $url = plugins_url();
 <td style="padding: 5px 5px 7px 5px;">Days in Advance:</td>
 <td style="padding: 5px 5px 7px 5px;">
 <select name="beds24_advancedays" id="beds24_advancedays">
+<option value ="-1" <?php if(get_option('beds24_advancedays') == -1) echo "selected"; ?>>First Available</option>
 <?php for($i = 0; $i <= 180; $i += 1) { ?>
 <option value ="<?php echo $i; ?>" <?php if(get_option('beds24_advancedays') == $i) echo "selected"; ?>><?php echo $i; ?></option>
 <?php } ?>
@@ -1034,7 +1051,7 @@ $options['new'] = 'new window';
 <tbody>
 <tr>
 <td width="50%">Embedded booking page</td>
-<td>[beds24]</td>
+<td>[beds24-embed]</td>
 </tr>
 <tr>
 <td width="50%">Booking button</td>
