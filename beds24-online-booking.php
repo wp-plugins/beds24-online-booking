@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available <a href="http://www.beds24.com/join.html" target="_blank">here</a>
-Version: 2.0.2
+Version: 2.0.3
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -80,6 +80,7 @@ add_shortcode("beds24-button", "beds24_booking_page_button");
 add_shortcode("beds24-box", "beds24_booking_page_box");
 add_shortcode("beds24-searchbox", "beds24_booking_page_searchbox");
 add_shortcode("beds24-embed", "beds24_booking_page_embed");
+add_shortcode("beds24-landing", "beds24_booking_page_landing");
 
 
 add_action( 'admin_enqueue_scripts', 'beds24_admin_scripts' );
@@ -138,6 +139,15 @@ if (!isset($atts['type']))
   $atts['type'] = 'embed';
 if (!isset($atts['advancedays'])) 
   $atts['advancedays'] = '-1';
+return beds24_booking_page($atts);
+}
+
+function beds24_booking_page_landing($atts)
+{
+if (!isset($atts['type'])) 
+  $atts['type'] = 'embed';
+if (!isset($atts['noselection'])) 
+  $atts['noselection'] = true;
 return beds24_booking_page($atts);
 }
 
@@ -255,16 +265,16 @@ else
 	}
 	
 	
+$urlcheckin = '';
 if ($checkin)
   {
   $checkin = date('Y-m-d', strtotime($checkin));
   if ($checkin < date('Y-m-d'))
     $checkin = date('Y-m-d');
   $_SESSION['beds24-checkin'] = $checkin;
-  $urlcheckin = "&amp;checkin=".urlencode($checkin);
+  if (!isset($atts['noselection']))
+    $urlcheckin = "&amp;checkin=".urlencode($checkin);
   }
-else
-  $urlcheckin = '';
 	
 //default number of nights
 if (isset($_REQUEST['numnight']))
@@ -276,7 +286,7 @@ else if (isset($atts['numnight']))
 else 
 	$numnight = get_option('beds24_numnight');
 $_SESSION['beds24-numnight'] = $numnight;
-if (isset($numnight))
+if (isset($numnight) && !isset($atts['noselection']))
 	$urlnumnight = "&amp;numnight=".urlencode(intval($numnight));
 else
 	$urlnumnight = '';
@@ -291,7 +301,7 @@ else if (isset($atts['numadult']))
 else 
 	$numadult = get_option('beds24_numnight');
 $_SESSION['beds24-numadult'] = $numadult;
-if (isset($numadult))
+if (isset($numadult) && !isset($atts['noselection']))
 	$urlnumadult = "&amp;numadult=".urlencode(intval($numadult));
 else
 	$urlnumadult = '';
@@ -1054,6 +1064,10 @@ $options['new'] = 'new window';
 <td>[beds24-embed]</td>
 </tr>
 <tr>
+<td width="50%">Embedded booking page without preset guest selections</td>
+<td>[beds24-landing]</td>
+</tr>
+<tr>
 <td width="50%">Booking button</td>
 <td>[beds24-button]</td>
 </tr>
@@ -1182,6 +1196,10 @@ $options['new'] = 'new window';
 <tr>
 <td width="50%">type of widget (link, button, box, searchbox, searchresult, embed)</td>
 <td>type="link"</td>
+</tr>
+<tr>
+<td width="50%">do not set checkin, number of nights or guests in the iframe parameters so they can be set by a widget redirecting from another page</td>
+<td>noselection="true"</td>
 </tr>
 </tbody>
 </table>

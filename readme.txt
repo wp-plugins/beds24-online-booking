@@ -73,6 +73,9 @@ Yes. You may define multiple properties in Beds24.com and implement a search for
 
 == Changelog ==
 
+= 2.0.3 =
+* added shortcode [beds24-landing] which creates an embedded iframe without fixed date or guest information so this information can be passed from a form on another page via a redirect
+
 = 2.0.2 =
 * supports opening embedded booking page at first available date
 
