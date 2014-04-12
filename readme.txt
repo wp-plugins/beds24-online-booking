@@ -2,11 +2,11 @@
 Contributors: markkinchin
 Tags: online booking system, booking system, online booking engine, booking engine, IBE, availability calendar, reservation calendar, beds24, hotel reservation system, hotel booking system, multi property booking system, booking button, bed and breakfast, guest house, inn, channel manager, channel management, OTA
 Requires at least: 2.0.2
-Tested up to: 3.8.1
+Tested up to: 3.8.2
 License: GPLv2 or later
 Stable tag: trunk
 
-Accept commission free online bookings from your Wordpress website. Suitable for hotels, B&B's, holiday rentals, apartments and villas. Single and multiple property capabilites.
+Accept commission free online bookings from your Wordpress website. Suitable for hotels, B&B's, holiday rentals, apartments and villas. 
 == Description ==
 = Powerful and Customisable Online Booking System =
 Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization.
@@ -22,6 +22,7 @@ The plugin is free to use but you do need an account with Beds24.com. A free tri
 * Multi language booking page
 * Online payments
 * Optional channel manager
+* Multi-language support
 
 = Features for Hotel Groups and Agencies =
 * Agency seach box
@@ -72,6 +73,10 @@ All payments go directly to the host. You can either collect payments after arri
 Yes. You may define multiple properties in Beds24.com and implement a search form that shows the guest a list of those available for their search criteria. 
 
 == Changelog ==
+
+= 2.0.4 =
+* multi-language functionality added
+* php session deactivated if headers already sent
 
 = 2.0.3 =
 * added shortcode [beds24-landing] which creates an embedded iframe without fixed date or guest information so this information can be passed from a form on another page via a redirect

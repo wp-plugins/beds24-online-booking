@@ -1,3 +1,5 @@
+<h2>About</h2>
+<div class="b24_section section-text">
 <h3>1. What this plugin can do</h3>
 <p>This plugin connects your Beds24 account to your Wordpress page to enable commission free online bookings.</p>
 
@@ -13,5 +15,5 @@
 
 <h3>5. Web Developers</h3>
 <p>You can modify the supplied booking widget theme files and copy them into your theme. The plugin will search the theme directory for the filename and use the file located there if it exists.</p>
-
+</div>
 
