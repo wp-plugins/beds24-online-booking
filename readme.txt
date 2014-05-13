@@ -2,7 +2,7 @@
 Contributors: markkinchin
 Tags: online booking system, booking system, online booking engine, booking engine, IBE, availability calendar, reservation calendar, beds24, hotel reservation system, hotel booking system, multi property booking system, booking button, bed and breakfast, guest house, inn, channel manager, channel management, OTA
 Requires at least: 2.0.2
-Tested up to: 3.8.2
+Tested up to: 3.9.1
 License: GPLv2 or later
 Stable tag: trunk
 
@@ -73,6 +73,9 @@ All payments go directly to the host. You can either collect payments after arri
 Yes. You may define multiple properties in Beds24.com and implement a search form that shows the guest a list of those available for their search criteria. 
 
 == Changelog ==
+
+= 2.0.5 =
+* bug fix, default number of guests value was not showing
 
 = 2.0.4 =
 * multi-language functionality added
