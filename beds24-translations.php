@@ -1,4 +1,4 @@
-<?
+<?php
 switch ($lang)
   {
   case 'de': //german
@@ -138,4 +138,3 @@ switch ($lang)
     $translate['Search Accommodation'] = 'Search Accommodation';
     break;
   }
-?>

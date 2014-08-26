@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 	showOn: 'both',
 	dateFormat: 'yy-mm-dd',
 	beforeShow: readdatepicker, 
-	onSelect: updatedatepicker, 
+	onSelect: updatedatepicker
 });
 	$( "#fdate_monthyear" ).change(function() {
 		fdate_monthyear_changed();

@@ -1,6 +1,6 @@
 <h2>Agency Searchbox</h2>
 <div class="b24_section section-text">
-<p>The plugin can use posts or XML to display availabilty for multiple hotels or lodgings and allows search by the search criteria defineds in the SETTINGS-> AGENCY section of Beds24.</p>
+<p>The plugin can use posts or XML to display availabilty for multiple hotels or lodgings and allows search by the search criteria defined in the SETTINGS-> AGENCY section of Beds24.</p>
 <p><strong>1.1 Agency Searchbox </strong></p>
 <p>You can embed a searchbox into your Wordpress site. The searchbox will return your live availability. The results can be shown on the same or a different page or in a pop up.</p>
 <p>Use shortcodes to add a searchbox in a post, page or sidebar.</p>
