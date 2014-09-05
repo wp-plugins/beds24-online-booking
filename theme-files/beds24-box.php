@@ -1,4 +1,13 @@
-<!-- This file can be modified and placed in your theme directory, The plugin will search for a file with this name there first and use it if it exists -->
+<?php
+//This file can be modified and placed in your theme directory, The plugin will search for a file with this name there first and use it if it exists
+
+//default values
+if (!isset($_REQUEST['numadult'])) $_REQUEST['numadult'] = 2; //number of guests
+if (!isset($_REQUEST['numnight'])) $_REQUEST['numnight'] = 1; //number of nights
+if (!isset($_REQUEST['fdate_date'])) $_REQUEST['fdate_date'] = date('Y-m', strtotime('+1 days')); //date (days in advance)
+if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y-m', strtotime('+1 days')); //month-year (days in advance)
+?>
+
 <div class="B24_searchbox">
 <div class="B24_searchbox_inner">
 

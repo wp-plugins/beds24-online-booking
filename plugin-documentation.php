@@ -58,31 +58,31 @@
 <td>roomid="1"</td>
 </tr>
 <tr>
-<td width="50%">number of dates displayed</td>
+<td width="50%">number of dates displayed (embedded booking page only)</td>
 <td>numdisplayed="7"</td>
 </tr>
 <tr>
-<td width="50%">hide or show calendar</td>
+<td width="50%">hide or show calendar (embedded booking page only)</td>
 <td>hidecalendar="no"</td>
 </tr>
 <tr>
-<td width="50%">hide or show header</td>
+<td width="50%">hide or show header (embedded booking page only)</td>
 <td>hideheader="yes"</td>
 </tr>
 <tr>
-<td width="50%">hide or show footer</td>
+<td width="50%">hide or show footer (embedded booking page only)</td>
 <td>hidefooter="yes"</td>
 </tr>
 <tr>
-<td width="50%">checkin/show this many days from now (1 is tomorrow)</td>
+<td width="50%">checkin/show this many days from now (1 is tomorrow, embedded booking page only)</td>
 <td>advancedays="1"</td>
 </tr>
 <tr>
-<td width="50%">default number of nights selected</td>
+<td width="50%">default number of nights selected (embedded booking page only)</td>
 <td>numnight="2"</td>
 </tr>
 <tr>
-<td width="50%">default number of guests selected</td>
+<td width="50%">default number of guests selected (embedded booking page only)</td>
 <td>numdult="2"</td>
 </tr>
 <tr>
@@ -94,19 +94,19 @@
 <td>height="1000"</td>
 </tr>
 <tr>
-<td width="50%">padding in pixels</td>
+<td width="50%">padding in pixel (booking widgets only)</td>
 <td>padding="10"</td>
 </tr>
 <tr>
-<td width="50%">font color (hex code)</td>
+<td width="50%">font color (hex code, booking widgets only</td>
 <td>color="#000000"</td>
 </tr>
 <tr>
-<td width="50%">background color (hex code)</td>
+<td width="50%">background color (hex code, booking widgets only</td>
 <td>bgcolor="#ffffff"</td>
 </tr>
 <tr>
-<td width="50%">font size (pixels)</td>
+<td width="50%">font size (pixels, booking widgets only</td>
 <td>font-size="14"</td>
 </tr>
 <tr>
@@ -114,19 +114,19 @@
 <td>href="http://www.myurl.com"</td> 
 </tr>
 <tr>
-<td width="50%">open booking page in a new window</td>
+<td width="50%">open booking page in a new window (booking widget only)</td>
 <td>target="new"</td>
 </tr>
 <tr>
-<td width="50%">open booking page in a the same window</td>
+<td width="50%">open booking page in a the same window (booking widgets page only)</td>
 <td>target="window"</td>
 </tr>
 <tr>
-<td width="50%">open booking page in iframe on the same page</td>
+<td width="50%">open booking page in iframe on the same page (booking widgets only)</td>
 <td>target="iframe"</td>
 </tr>
 <tr>
-<td width="50%">freetext for modification of url parameters</td>
+<td width="50%">freetext for modification of url parameters (embedded booking page only)</td>
 <td>custom=""</td>
 </tr>
 <tr>
@@ -147,11 +147,11 @@
 </tr>
 <tr>
 <td width="50%">do not set checkin, number of nights or guests in the iframe parameters so they can be set by a widget redirecting from another page</td>
-<td>noselection="true"</td>
+<td>noselection="true" (embedded booking page only)</td>
 </tr>
 <tr>
 <td width="50%">do not scroll to the top</td>
-<td>scrolltop="no"</td>
+<td>scrolltop="no" (embedded booking page only)</td>
 </tr>
 <tr>
 <td width="50%">set other than default language, click

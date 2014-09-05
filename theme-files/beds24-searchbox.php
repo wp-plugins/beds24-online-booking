@@ -1,5 +1,13 @@
-<!-- This file can be modified and placed in your theme directory, The plugin will search for a file with this name there first and use it if it exists -->
-<!-- Modify the code entering your search criteria as dropdownlist or checkboxes. You can make them always visible or only visible upon clicking "Advanced Search" -->
+<?php
+//This file can be modified and placed in your theme directory, The plugin will search for a file with this name there first and use it if it exists
+//Modify the code entering your search criteria as dropdownlist or checkboxes. You can make them always visible or only visible upon clicking "Advanced Search"
+
+//default values
+if (!isset($_REQUEST['numadult'])) $_REQUEST['numadult'] = 2; //number of guests
+if (!isset($_REQUEST['numnight'])) $_REQUEST['numnight'] = 1; //number of nights
+if (!isset($_REQUEST['fdate_date'])) $_REQUEST['fdate_date'] = date('Y-m', strtotime('+1 days')); //date (days in advance)
+if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y-m', strtotime('+1 days')); //month-year (days in advance)
+?>
 
 <div class="B24agency_searchbox">
 <div class="B24agency_searchbox_inner">
@@ -91,7 +99,7 @@ Appartment<!--Label for search category 2 -->
 <div class="B24cguestselect">
 <select class="B24guest" name="numadult">
 <?php for ($i=1; $i<=12; $i++) { ?>
-	<option <?php echo ($_REQUEST['numadalt']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+	<option <?php echo ($_REQUEST['numadult']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
 <?php } ?>
 </select>
 </div>
