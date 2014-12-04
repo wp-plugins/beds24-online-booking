@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available <a href="http://www.beds24.com/join.html" target="_blank">here</a>
-Version: 2.0.7
+Version: 2.0.9
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -34,6 +34,7 @@ add_option("beds24_color", '#dddddd');
 add_option("beds24_bgcolor", '#444444');
 add_option("beds24_padding", 10);
 add_option("beds24_referer", 'wordpress');
+add_option("beds24_domain", 'https://www.beds24.com');
 }
 
 function beds24_booking_remove() 
@@ -56,6 +57,7 @@ delete_option('beds24_color');
 delete_option('beds24_bgcolor');
 delete_option('beds24_padding');
 delete_option('beds24_referer');
+delete_option('beds24_domain');
 }
 
 
@@ -269,6 +271,17 @@ if ($referer)
   $urlreferer = '&amp;referer='.urlencode($referer);
 else  
   $urlreferer = '';
+
+//domain
+if (isset($atts['domain']))
+	$domain = strtolower($atts['domain']);
+else if (get_post_meta($postid, 'domain', true))	
+	$domain = get_post_meta($postid, 'domain', true); 
+else 
+	$domain = get_option('beds24_domain');
+
+if (!$domain)
+	$domain = 'https://www.beds24.com';
 	
 //scrolltop (for iframe)
 if (isset($atts['scrolltop']))
@@ -458,7 +471,7 @@ $buttonstyle = $style;
 if (isset($atts['width']))
   $boxstyle .= 'max-width: '.$atts['width'].'px;';
 
-$defaulthref = 'https://www.beds24.com/booking2.php';
+$defaulthref = $domain.'/booking2.php';
 
 //href target
 if (isset($atts['href']))
@@ -618,7 +631,7 @@ else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
 	{
 	if (isset($_REQUEST['fdate_date']))
 		{
-		$xmlurl = 'https://www.beds24.com/api/getavailabilities.xml';
+		$xmlurl = 'https://api.beds24.com/getavailabilities.xml';
 		$postarray = array( 'ownerid' => $ownerid, 'checkin' => $checkin, 'numnight' => $numnight, 'numadult' => $numadult );
 
 		$category = array();
@@ -677,7 +690,7 @@ else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
 				$propid = intval($xmlproperty['id']);
 				$name = $xmlproperty['name'];
 				$bestprice = $xmlproperty['bestPrice'];
-				$bookurl = 'https://www.beds24.com/booking2.php?propid='.$propid.'&amp;checkin='.$checkin.'&amp;numadult='.$numadult.'&amp;numnight='.$numnight.$urlnumdisplayed.$urlhideheader.$urlhidefooter.$urlhidecalendar.$urlcheckin.$urllang.$urlreferer.$custom;
+				$bookurl = $domain.'/booking2.php?propid='.$propid.'&amp;checkin='.$checkin.'&amp;numadult='.$numadult.'&amp;numnight='.$numnight.$urlnumdisplayed.$urlhideheader.$urlhidefooter.$urlhidecalendar.$urlcheckin.$urllang.$urlreferer.$custom;
 				$propoutput = false;
 
 				$args = array('meta_key' => 'propid', 'meta_value'=> $propid);
@@ -797,7 +810,7 @@ $url = plugins_url();
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="beds24_ownerid,beds24_propid,beds24_width,beds24_height,beds24_numdisplayed,beds24_hidecalendar,beds24_hideheader,beds24_hidefooter,beds24_advancedays,beds24_numnight,beds24_numadult,beds24_custom,beds24_target,beds24_color,beds24_bgcolor,beds24_padding,beds24_referer" />
+<input type="hidden" name="page_options" value="beds24_ownerid,beds24_propid,beds24_width,beds24_height,beds24_numdisplayed,beds24_hidecalendar,beds24_hideheader,beds24_hidefooter,beds24_advancedays,beds24_numnight,beds24_numadult,beds24_custom,beds24_target,beds24_color,beds24_bgcolor,beds24_padding,beds24_referer,beds24_domain" />
 
 <div id="b24_of-nav">
 <ul>

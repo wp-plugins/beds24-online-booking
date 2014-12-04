@@ -165,4 +165,7 @@ list-style: none outside none;
 margin: 0;
 padding: 0;
 }
- 
+
+#ui-datepicker-div{
+display: none;
+}

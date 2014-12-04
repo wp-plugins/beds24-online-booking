@@ -153,7 +153,16 @@
 <td style="padding: 5px 5px 7px 5px;">
 <input type="text" name="beds24_referer" id="beds24_referer" value="<?php echo str_replace('"', "", get_option('beds24_referer')); ?>">
 </td>
-<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Store this text as the referer for bookings originating here</span>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">Store this text as the referer for bookings originating here.</span>
+</td>
+</tr>
+
+<tr valign="top">
+<td style="padding: 5px 5px 7px 5px;">Booking Page Domain:</td>
+<td style="padding: 5px 5px 7px 5px;">
+<input type="text" name="beds24_domain" id="beds24_domain" value="<?php echo str_replace('"', "", get_option('beds24_domain')); ?>">
+</td>
+<td style="padding: 5px 5px 7px 5px;"> <span style="font-style: italic; color: gray;">The domain hosting your booking page, normally https://www.beds24.com</span>
 </td>
 </tr>
 

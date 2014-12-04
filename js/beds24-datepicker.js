@@ -1,3 +1,6 @@
+var beds24dayname = "Day";
+
+
 jQuery(document).ready(function($) {
 	$("#datepicker").datepicker({
 	buttonImage: WPURLS.siteurl + '/wp-content/plugins/beds24-online-booking/theme-files/include/ic_calendar2.png',
@@ -9,16 +12,99 @@ jQuery(document).ready(function($) {
 	beforeShow: readdatepicker, 
 	onSelect: updatedatepicker
 });
-	$( "#fdate_monthyear" ).change(function() {
-		fdate_monthyear_changed();
-	});
-	if(document.getElementById("fdate_monthyear"))
-		fdate_monthyear_changed ();
+	
+var beds24lang = jQuery('#fdate_lang').val();
+var beds24getscript = false;
+switch (beds24lang) {
+case "da":  
+  beds24dayname="Dag";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-da.js";
+  break;
+case "de":  //german
+  beds24dayname="Tag";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-de.js";
+  break;
+case "es":  //spanish
+  beds24dayname="Dia";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-es.js";
+  break;
+case "fi":  
+  beds24dayname="Päivä";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-fi.js";
+  break;
+case "fr":  //french
+  beds24dayname="Jour";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-fr.js";
+  break;
+case "it":  //italian
+  beds24dayname="Giorno";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-it.js";
+  break;        
+case "ja":  
+  beds24dayname="日";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-ja.js";
+  break;
+case "lt":  
+  beds24dayname="Diena";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-lt.js";
+  break;
+case "nl":  
+  beds24dayname="Dag";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-nl.js";
+  break;
+case "no":  
+  beds24dayname="Dag";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-no.js";
+  break;
+case "pl":  
+  beds24dayname="Dzień";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-pl.js";
+  break;
+case "pt":  //portuges
+  beds24dayname="Dia";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-pt.js";
+  break;
+case "ru":  
+  beds24dayname="День";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-ru.js";
+  break;
+case "sk":  
+  beds24dayname="Deň";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-sk.js";
+  break;
+case "sl":  
+  beds24dayname="Dan";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-sl.js";
+  break;
+case "sv":  
+  beds24dayname="dag";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-sv.js";
+  break;
+case "tr":  
+  beds24dayname="Gün";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-tr.js";
+  break;
+case "zn":  
+  beds24dayname="日";
+	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-zh-CN.js";
+  break;
+default: //default english
+	beds24dayname="Day";
+	if(document.getElementById("fdate_monthyear")) {fdate_monthyear_changed ();}
+break;
+}
+if (beds24getscript) {
+	$.getScript(beds24getscript).done(function() {if(document.getElementById("fdate_monthyear")) {fdate_monthyear_changed();}});
+}
+
+$( "#fdate_monthyear" ).change(function() {
+	fdate_monthyear_changed();
+});
 });
 
 function readdatepicker() {
-    jQuery('#datepicker').val(jQuery('#fdate_monthyear').val() + '-' + jQuery('#fdate_date').val());
-    return {};
+	jQuery('#datepicker').val(jQuery('#fdate_monthyear').val() + '-' + jQuery('#fdate_date').val());
+	return {};
 }
 
 function updatedatepicker(date) {
@@ -30,10 +116,9 @@ function updatedatepicker(date) {
 function fdate_monthyear_changed () {
 	var dd = jQuery('#fdate_date').val();
 	var mm = jQuery('#fdate_monthyear').val();
-	var weekday = get_weekday();
 	jQuery('#fdate_date').empty();
 	var options = new Array();
-	options [0] = weekday[7];
+	options [0] = beds24dayname;
 	if (mm==0) 
 	{
 	for (i=1; i<=31; i++)
@@ -49,7 +134,8 @@ function fdate_monthyear_changed () {
 		{
 		var d = new Date(year, month-1, i);	
 		var n = d.getDay();
-		options[i] = weekday[n] + ' ' + i;
+		var w = jQuery("#datepicker").datepicker("option","dayNamesMin");
+		options[i] = w[n] + ' ' + i;
 		}
 	}
 
@@ -57,75 +143,6 @@ function fdate_monthyear_changed () {
 	jQuery('#fdate_date').append(jQuery("<option></option>").attr("value", value).text(key));
 	});
 	jQuery('#fdate_date').val(dd);
-}
-
-
-function get_weekday() {
-var weekday = new Array(8);
-var lang = jQuery('#fdate_lang').val();
-switch (lang) {
-case "de":  //german
-  weekday[0]="So";
-  weekday[1]="Mo";
-  weekday[2]="Di";
-  weekday[3]="Mi";
-  weekday[4]="Do";
-  weekday[5]="Fr";
-  weekday[6]="Sa";
-  weekday[7]="Tag";
-  break;
-case "es":  //spanish
-  weekday[0]="lun";
-  weekday[1]="mar";
-  weekday[2]="mié";
-  weekday[3]="jue";
-  weekday[4]="vie";
-  weekday[5]="sáb ";
-  weekday[6]="dom";
-  weekday[7]="Dia";
-  break;
-case "fr":  //french
-  weekday[0]="lun";
-  weekday[1]="mar";
-  weekday[2]="mer";
-  weekday[3]="jeu";
-  weekday[4]="ven";
-  weekday[5]="sam ";
-  weekday[6]="dim";
-  weekday[7]="Jour";
-  break;
-case "it":  //italian
-  weekday[0]="lun";
-  weekday[1]="mar";
-  weekday[2]="mer";
-  weekday[3]="gio";
-  weekday[4]="ven";
-  weekday[5]="sab ";
-  weekday[6]="dom";
-  weekday[7]="Giorno";
-  break;        
-case "pt":  //portuges
-  weekday[0]="seg";
-  weekday[1]="ter";
-  weekday[2]="qua";
-  weekday[3]="qui";
-  weekday[4]="sex";
-  weekday[5]="sab ";
-  weekday[6]="dom";
-  weekday[7]="Dia";
-  break;
-default: //default english
-  weekday[0]="Sun";
-  weekday[1]="Mon";
-  weekday[2]="Tue";
-  weekday[3]="Wed";
-  weekday[4]="Thu";
-  weekday[5]="Fri";
-  weekday[6]="Sat";
-  weekday[7]="Day";
-  break;
-}
-return weekday;  
 }
 
 

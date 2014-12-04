@@ -74,6 +74,12 @@ Yes. You may define multiple properties in Beds24.com and implement a search for
 
 == Changelog ==
 
+= 2.0.9 =
+* date picker translations added
+
+= 2.0.8 =
+* domain setting added for private domain booking pages
+
 = 2.0.7 =
 * tested for wordpress 4.0
 * booking box default values now adjustable in file
