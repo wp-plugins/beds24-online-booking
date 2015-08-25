@@ -3,7 +3,7 @@
 Plugin Name: Beds24 Online Booking
 Plugin URI: http://www.beds24.com
 Description: Beds24.com is a full featured online booking engine. The system is very flexible with many options for customization. The Beds24.com online booking system and channel manager is suitable for any type of accommodation such as hotels, motels, B&B's, hostels, vacation rentals, holiday homes and campgrounds as well as selling extras like tickets or tours. The plugin is free to use but you do need an account with Beds24.com. A free trial account is available <a href="http://www.beds24.com/join.html" target="_blank">here</a>
-Version: 2.0.9
+Version: 2.0.10
 Author: Mark Kinchin
 Author URI: http://www.beds24.com
 License: GPL2 or later
@@ -83,7 +83,9 @@ add_shortcode("beds24", "beds24_booking_page");
 add_shortcode("beds24-link", "beds24_booking_page_link");
 add_shortcode("beds24-button", "beds24_booking_page_button");
 add_shortcode("beds24-box", "beds24_booking_page_box");
+add_shortcode("beds24-strip", "beds24_booking_page_strip");
 add_shortcode("beds24-searchbox", "beds24_booking_page_searchbox");
+add_shortcode("beds24-searchresult", "beds24_booking_page_searchresult");
 add_shortcode("beds24-embed", "beds24_booking_page_embed");
 add_shortcode("beds24-landing", "beds24_booking_page_landing");
 
@@ -129,10 +131,28 @@ if (!isset($atts['fontsize']))
 return beds24_booking_page($atts);
 }
 
+function beds24_booking_page_strip($atts)
+{
+if (!isset($atts['type'])) 
+  $atts['type'] = 'strip';
+if (!isset($atts['fontsize'])) 
+  $atts['fontsize'] = '20';
+return beds24_booking_page($atts);
+}
+
 function beds24_booking_page_searchbox($atts)
 {
 if (!isset($atts['type'])) 
   $atts['type'] = 'searchbox';
+if (!isset($atts['fontsize'])) 
+  $atts['fontsize'] = '20';
+return beds24_booking_page($atts);
+}
+
+function beds24_booking_page_searchresult($atts)
+{
+if (!isset($atts['type'])) 
+  $atts['type'] = 'searchresult';
 if (!isset($atts['fontsize'])) 
   $atts['fontsize'] = '20';
 return beds24_booking_page($atts);
@@ -380,6 +400,7 @@ if ($height<100)
 //type=link
 //type=button
 //type=box
+//type=strip
 //type=searchbox
 //type=searchresult
 //type=embed
@@ -491,7 +512,7 @@ $linkclass = '';
 
 if ($target == 'window')
 	{
-	if ($type != 'box')
+	if ($type != 'box' && $type != 'strip')
 	  {
 	  if ($formurl == $defaulthref) //stay on same page
 		$formurl = '';
@@ -523,12 +544,12 @@ else if ($type == 'button')
 	$output .= '<button class="'.$class.'" style="'.$buttonstyle.'">'.htmlspecialchars($text).'</button>';
 	$output .= '</a>';
 	}
-else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
+else if ($type == 'box' || $type == 'strip' || $type == 'searchbox' || $type == 'searchresult')
 	{
 	$searchbox = false;
-	if($type == 'box' || $type == 'searchbox')
+	if ($type == 'box' || $type == 'strip' || $type == 'searchbox')
 	{
-	if($type == 'box')
+	if ($type == 'box')
 	  {
 	  if ($lang)
 	    {
@@ -544,17 +565,45 @@ else if ($type == 'box' || $type == 'searchbox' || $type == 'searchresult')
 	    }
 	  $file =  plugin_dir_path( __FILE__ ) . 'theme-files/beds24-box-'.$lang.'.php';
 	  if (!$searchbox && $lang && file_exists($file))
-		{
-		ob_start();
-		include($file);
-		$searchbox .= ob_get_clean();
-		}
+      {
+      ob_start();
+      include($file);
+      $searchbox .= ob_get_clean();
+      }
 	  if (!$searchbox)
-		{
-		ob_start();
-		include( plugin_dir_path( __FILE__ ) . 'theme-files/beds24-box.php');
-		$searchbox .= ob_get_clean();
-		}
+      {
+      ob_start();
+      include( plugin_dir_path( __FILE__ ) . 'theme-files/beds24-box.php');
+      $searchbox .= ob_get_clean();
+      }
+	  }
+	else if ($type == 'strip')
+	  {
+	  if ($lang)
+	    {
+	    ob_start();
+	    get_template_part('beds24-strip-'.$lang);
+	    $searchbox = ob_get_clean();
+	    }
+	  if (!$searchbox)
+	    {
+	    ob_start();
+	    get_template_part('beds24-strip');
+	    $searchbox = ob_get_clean();
+	    }
+	  $file =  plugin_dir_path( __FILE__ ) . 'theme-files/beds24-strip-'.$lang.'.php';
+	  if (!$searchbox && $lang && file_exists($file))
+      {
+      ob_start();
+      include($file);
+      $searchbox .= ob_get_clean();
+      }
+	  if (!$searchbox)
+      {
+      ob_start();
+      include( plugin_dir_path( __FILE__ ) . 'theme-files/beds24-strip.php');
+      $searchbox .= ob_get_clean();
+      }
 	  }
 	else if($type == 'searchbox')
 	  {

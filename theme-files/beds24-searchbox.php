@@ -3,10 +3,13 @@
 //Modify the code entering your search criteria as dropdownlist or checkboxes. You can make them always visible or only visible upon clicking "Advanced Search"
 
 //default values
+$daysinadvance = 0; //initial date to show, this many days ahead of today
 if (!isset($_REQUEST['numadult'])) $_REQUEST['numadult'] = 2; //number of guests
 if (!isset($_REQUEST['numnight'])) $_REQUEST['numnight'] = 1; //number of nights
-if (!isset($_REQUEST['fdate_date'])) $_REQUEST['fdate_date'] = date('Y-m', strtotime('+1 days')); //date (days in advance)
-if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y-m', strtotime('+1 days')); //month-year (days in advance)
+
+
+if (!isset($_REQUEST['fdate_date'])) $_REQUEST['fdate_date'] = date('d', strtotime('+'.$daysinadvance.' days'));
+if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y-m', strtotime('+'.$daysinadvance.' days'));
 ?>
 
 <div class="B24agency_searchbox">

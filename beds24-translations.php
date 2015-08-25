@@ -4,6 +4,7 @@ switch ($lang)
   case 'de': //german
     $translate['Check In'] = 'Check-in';
     $translate['Day'] = 'Tag';
+    $translate['Guest'] = 'Gast';
     $translate['Guests'] = 'Gaeste';
     $translate['Month'] = 'Monat';
     $translate['month1'] = 'Jan';
@@ -19,14 +20,41 @@ switch ($lang)
     $translate['month11'] = 'Nov';
     $translate['month12'] = 'Dec';
     $translate['more search options'] = 'Weitere Suchoptionen';
+    $translate['Night'] = 'Nacht';
     $translate['Nights'] = 'Nächte';
     $translate['Search'] = 'Suchen';
     $translate['Search Accommodation'] = 'Suche';
-        
     break;
-   case 'es': //spanish
+
+  case 'el': //greek
+    $translate['Check In'] = 'Άφιξη';
+    $translate['Day'] = 'Ημέρα';
+    $translate['Guest'] = 'Επισκέπτης';
+    $translate['Guests'] = 'Επισκέπτες';
+    $translate['Month'] = 'Μήνας';
+    $translate['month1'] = 'Ιαν';
+    $translate['month2'] = 'Φεβ';
+    $translate['month3'] = 'Μαρ';
+    $translate['month4'] = 'Απρ';
+    $translate['month5'] = 'Μαι';
+    $translate['month6'] = 'Ιου';
+    $translate['month7'] = 'Ιουλ';
+    $translate['month8'] = 'Αυγ';
+    $translate['month9'] = 'Σεπ';
+    $translate['month10'] = 'Οκτ';
+    $translate['month11'] = 'Νοε';
+    $translate['month12'] = 'Δεκ';
+    $translate['more search options'] = 'προχωρημένη αναζήτηση';
+    $translate['Night'] = 'Νύχτα';
+    $translate['Nights'] = 'Νύχτες';
+    $translate['Search'] = 'Αναζήτηση';
+    $translate['Search Accommodation'] = 'Αναζήτηση Διαμονής';
+    break;
+
+  case 'es': //spanish
     $translate['Check In'] = 'Check-in';
     $translate['Day'] = 'Dia';
+    $translate['Guest'] = 'Huésped';
     $translate['Guests'] = 'Huéspedes';
     $translate['Month'] = 'Mes';
     $translate['month1'] = 'ene';
@@ -42,6 +70,7 @@ switch ($lang)
     $translate['month11'] = 'nov';
     $translate['month12'] = 'dic';
     $translate['more search options'] = 'Opciones de búsqueda adicionales';
+    $translate['Night'] = 'Noche';
     $translate['Nights'] = 'Noches';
     $translate['Search'] = 'Buscar';
     $translate['Search Accommodation'] = 'Buscar';
@@ -50,6 +79,7 @@ switch ($lang)
          case 'fr': //french
     $translate['Check In'] = 'Check-in';
     $translate['Day'] = 'Jour';
+     $translate['Guest'] = 'Client';
     $translate['Guests'] = 'Clients';
     $translate['Month'] = 'Mois';
     $translate['month1'] = 'jan';
@@ -66,12 +96,14 @@ switch ($lang)
     $translate['month12'] = 'déc';
     $translate['more search options'] = 'Autres options de recherche';
     $translate['Nights'] = 'Nuits';
+    $translate['Night'] = 'Nuit';
     $translate['Search'] = 'Rechercher';
     $translate['Search Accommodation'] = 'Rechercher';
     break;
         case 'it': //italian
     $translate['Check In'] = 'Check-in';
     $translate['Day'] = 'Giorno';
+    $translate['Guest'] = 'Ospite';
     $translate['Guests'] = 'Ospiti';
     $translate['Month'] = 'Mese';
     $translate['month1'] = 'gen';
@@ -87,6 +119,7 @@ switch ($lang)
     $translate['month11'] = 'nov';
     $translate['month12'] = 'dic';
     $translate['more search options'] = 'Ulteriori opzioni di ricerca';
+    $translate['Night'] = 'Notte';
     $translate['Nights'] = 'Notti';
     $translate['Search'] = 'Cerca';
     $translate['Search Accommodation'] = 'Cerca';
@@ -95,6 +128,7 @@ switch ($lang)
         case 'pt': //portugese
     $translate['Check In'] = 'Entrada';
     $translate['Day'] = 'Dia';
+    $translate['Guest'] = 'Hóspede';
     $translate['Guests'] = 'Hóspedes';
     $translate['Month'] = 'Mes';
     $translate['month1'] = 'jan';
@@ -110,6 +144,7 @@ switch ($lang)
     $translate['month11'] = 'nov';
     $translate['month12'] = 'dez';
     $translate['more search options'] = 'Opções adicionais de pesquisa';
+    $translate['Night'] = 'Noite';
     $translate['Nights'] = 'Noites';
     $translate['Search'] = 'Pesquisar';
     $translate['Search Accommodation'] = 'Pesquisar';
@@ -118,6 +153,7 @@ switch ($lang)
   default: //english
     $translate['Check In'] = 'Check In';
     $translate['Day'] = 'Day';
+    $translate['Guest'] = 'Guest';
     $translate['Guests'] = 'Guests';
     $translate['Month'] = 'Month';
     $translate['month1'] = 'Jan';
@@ -133,6 +169,7 @@ switch ($lang)
     $translate['month11'] = 'Nov';
     $translate['month12'] = 'Dec';
     $translate['more search options'] = 'more search options';
+    $translate['Night'] = 'Night';
     $translate['Nights'] = 'Nights';
     $translate['Search'] = 'Search';
     $translate['Search Accommodation'] = 'Search Accommodation';

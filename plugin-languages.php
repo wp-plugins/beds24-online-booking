@@ -9,7 +9,7 @@
 <p>Click <a target="_blank" href="http://wiki.beds24.com/index.php?title=Page/widgetwebdesign">here for a list of all language parameters</a>.
 </p>
 <strong>Booking Box</strong>
-<p>Exapmles:</p>
+<p>Examples:</p>
 <p>Default language shortcode for booking box: [beds24-box] </p>
 <p>French language shortcode for booking box: [beds24-box lang="fr"] </p>       
 <p>The booking box is available in English (en), German (de), French (fr), Italian (it) and Portugese (pt). If you need another language please contact us via the ticket support system in the Beds24 control panel.</p>

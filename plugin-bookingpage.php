@@ -1,7 +1,7 @@
 <h2>Embedded Booking Page</h2>
 <div class="b24_section section-text">
-<h3 class="b24_heading">Customise and Install your Embedded Booking Page.</h3>
-<p>These settings customise your embedded booking page. To change fonts and colours log into your Beds24 account and go to SETTINGS -> BOOKING PAGE -> PAGE DESIGN</p>
+<h3 class="b24_heading">Customise and install your embedded booking page.</h3>
+<p>These settings customise your embedded booking page. To change fonts and colours log into your Beds24 account and go to SETTINGS -> BOOKING PAGE -> PAGE DESIGN -> STYLE</p>
     
 <p>Paste the shortcode into the page where you want to embed your booking page. </p>    
 <table width="900" cellspacing="0" cellpadding="2" border="1">

@@ -28,12 +28,17 @@
 <td>[beds24-box]</td>
 </tr>
 <tr>
+<td width="50%">Booking strip</td>
+<td>[beds24-strip]</td>
+</tr>
+<tr>
+<tr>
 <td width="50%">Agency searchbox</td>
 <td>[beds24-searchbox]</td>
 </tr>
 <tr>
 <td width="50%">Agency searchresults</td>
-<td>[beds24-searchresults]</td>
+<td>[beds24-searchresult]</td>
 </tr>
 </tbody>
 </table>

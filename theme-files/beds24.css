@@ -5,7 +5,11 @@ clear: both;
 .beds24box, .beds24searchbox{
 color: inherit;
 border: 1px solid;
+-webkit-appearance: auto; 
+-moz-appearance: auto; 
+appearance: auto;
 }
+
 
 .beds24_bookbutton{
 font-weight:bold;
@@ -33,6 +37,7 @@ filter:alpha(opacity=80);
 opacity: 0.8;
 }
 
+
 .B24_searchbox input, select, textarea, submit {
 font-family: inherit;
 font-size: 100%;
@@ -41,6 +46,14 @@ font-size: 100%;
 .B24agency_searchbox input, select, textarea, submit {
 font-family: inherit;
 font-size: 100%;
+}
+
+.beds24searchbox select{
+width: auto;
+}
+
+.beds24box select{
+width: auto;
 }
 
 .B24agency_searchbox_inner a{
@@ -53,7 +66,35 @@ box-sizing:border-box;
 }
 .B24agency_searchitem,.B24_searchitem{
 margin: 0 0 5px 0;
+vertical-align: middle;
 }
+
+.beds24strip{
+width: 100%;
+display: inline-block;
+color: inherit;
+-webkit-appearance: auto; 
+-moz-appearance: auto; 
+appearance: auto;
+}
+
+.beds24strip img {
+margin:0 !important;
+}
+
+.beds24strip select{
+width: auto;
+}
+
+.B24_searchstrip_inner {
+text-align: center;
+}
+
+.B24_searchstrip_inner .B24_searchitem, .B24_searchstrip_inner .B24_searchitem2, .B24_searchstrip_inner .B24_searchitem3, .B24_searchstrip_inner .B24_searchitem4, .B24_searchstrip_inner .B24buttondiv{
+float: none;
+display: inline-block;
+}
+
 
 .B24checkinselect{
 margin: 0;
@@ -165,6 +206,8 @@ list-style: none outside none;
 margin: 0;
 padding: 0;
 }
+
+
 
 #ui-datepicker-div{
 display: none;

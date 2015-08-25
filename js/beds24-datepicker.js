@@ -24,6 +24,10 @@ case "de":  //german
   beds24dayname="Tag";
 	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-de.js";
   break;
+case "el":  //greek
+  beds24dayname="Ημέρα";
+  beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-el.js";
+  break;
 case "es":  //spanish
   beds24dayname="Dia";
 	beds24getscript = "https://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-es.js";

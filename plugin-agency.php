@@ -13,7 +13,7 @@
 </tr>
 <tr>
 <td></td>
-<td width="50%">insert this code where you want the search results do display</td>
+<td width="50%">insert this code where you want the search results to display</td>
 <td>[beds24-searchresult display="none"]</td>
 </tr>
 </tbody>
@@ -29,7 +29,7 @@
 </tr>
 <tr>
 <td></td>
-<td width="50%">insert this code where you want the search results do display</td>
+<td width="50%">insert this code where you want the search results to display</td>
 <td>[beds24-searchresult];</td>
 </tr>
 </tbody>
@@ -37,15 +37,15 @@
 <p><strong>1.2 Search Criteria</strong></p>
 <p>To set up the agency searchbox with your search criteria you need to modify the file /plugins/beds24-online-booking/theme-files/beds24-searchbox.php to use the search criteria you set up in Beds24 SETTINGS-> AGENCY -> SEARCH CRITERIA. There are comments in the file about the naming requirements for the select and checkbox elements. If you need assistance please contact us. </p>
 <p><strong>2.1 XML Display</strong></p>
-<p>By default the plugin uses the file plugins/beds24-online-booking/theme-files/ beds24-prop-xml.php to display the property results using the information returned by the search.This file can be customised to change the display of the information.</p>
+<p>By default the plugin uses the file plugins/beds24-online-booking/theme-files/ beds24-prop-xml.php to display the property results using the information returned by the search. This file can be customised to change the display of the information.</p>
 <strong>2.2 Post Display</strong>
 <br>
 <p>As an alternative you can display the results using Wordpress posts for each property. Custom fields are used to connect posts to your Beds24 account.</p>
 <ol>
 <li>Add a custom field </li>
 <li>As "Name" enter the phase: propid </li>
-<li>As value entere the Beds24 property Id number for this lodging. You will find this in the Beds24 control panel at SETTINGS -> PROPERTIES -> DESCRPTION.</li>
+<li>As value enter the Beds24 property Id number for this lodging. You will find this in the Beds24 control panel at SETTINGS -> PROPERTIES -> DESCRPTION.</li>
 <li>To add a booking widget to the post add a widget shortcode e.g. [beds24-button]</li>
 </ol>
-<p>The plugin will use file plugins/beds24-online-booking/theme-files/ beds24-prop-post.php isplay the property results using the information returned by the search.This file can be customised to change the display of the information. If the propid is not found in the custom field the XML Display will be used for that property. </p>
+<p>The plugin will use the file plugins/beds24-online-booking/theme-files/ beds24-prop-post.php to display the property results using the information returned by the search. This file can be customised to change the display of the information. If the propid is not found in the custom field the XML Display will be used for that property. </p>
 </div> 

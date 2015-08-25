@@ -11,11 +11,10 @@ if (!isset($_REQUEST['fdate_date'])) $_REQUEST['fdate_date'] = date('d', strtoti
 if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y-m', strtotime('+'.$daysinadvance.' days')); 
 ?>
 
-<div class="B24_searchbox">
-<div class="B24_searchbox_inner">
+<div class="B24_searchstrip">
+<div class="B24_searchstrip_inner">
 
 <div class="B24_searchitem B24_searchitem2">
-<div class="B24checkintext"><?php echo $translate['Check In']; ?></div>
 <div class="B24checkinselect">
 <input type="hidden" id="fdate_lang" name="lang" value="<?php echo $lang ?>">
 <input type="hidden" id="datepicker">
@@ -38,22 +37,22 @@ if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y
 </div>
 
 <div class="B24_searchitem B24_searchitem3">
-<div class="B24checkouttext"><?php echo $translate['Nights']; ?></div>
 <div class="B24checkoutselect">
 <select class="B24nights" name="numnight">
-<?php for ($i=1; $i<=31; $i++) { ?>
-<option <?php echo (isset($_REQUEST['numnight']) && $_REQUEST['numnight']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<option <?php echo (isset($_REQUEST['numnight']) && $_REQUEST['numnight']==1)?'selected="selected"':''; ?> value="<?php echo '1'; ?>"><?php echo '1 '.$translate['Night']; ?></option>
+<?php for ($i=2; $i<=31; $i++) { ?>
+<option <?php echo (isset($_REQUEST['numnight']) && $_REQUEST['numnight']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i.' '.$translate['Nights']; ?></option>
 <?php } ?>
 </select>
 </div>
 </div>
 
 <div class="B24_searchitem B24_searchitem4">
-<div class="B24guesttext"><?php echo $translate['Guests']; ?></div>
 <div class="B24cguestselect">
 <select class="B24guest" name="numadult">
-<?php for ($i=1; $i<=12; $i++) { ?>
-<option <?php echo (isset($_REQUEST['numadult']) && $_REQUEST['numadult']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<option <?php echo (isset($_REQUEST['numadult']) && $_REQUEST['numadult']==1)?'selected="selected"':''; ?> value="<?php echo '1'; ?>"><?php echo '1 '.$translate['Guest']; ?></option>
+<?php for ($i=2; $i<=12; $i++) { ?>
+<option <?php echo (isset($_REQUEST['numadult']) && $_REQUEST['numadult']==$i)?'selected="selected"':''; ?> value="<?php echo $i; ?>"><?php echo $i.' '.$translate['Guests']; ?></option>
 <?php } ?>
 </select>
 </div>
@@ -70,19 +69,3 @@ if (!isset($_REQUEST['fdate_monthyear'])) $_REQUEST['fdate_monthyear'] = date('Y
 </div>
 
 
-
-<script type="text/javascript">
-function setNumberOfDays() {
-var v = document.getElementById("fdate_monthyear").value;
-var vv = v.split("-"); 
-var n = daysInMonth(vv[0],vv[1]);
-var d = document.getElementById("fdate_date");
-d.options.length=1;
-for (var i=1; i<=n; i++) {
-  d.options[i]=new Option(i, i, false, false);
-  }
-}
-function daysInMonth(month,year) {
-  return new Date(year, month, 0).getDate();
-}
-</script>

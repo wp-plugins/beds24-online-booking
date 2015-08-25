@@ -2,7 +2,7 @@
 <div class="b24_section section-text">
 <h3 class="b24_heading">Booking Widgets can be installed with a shortcode. </h3>
 </div>
-<p>Use shortcodes to add a booking widget to in a post, page or sidebar. Paste the shortcode where you want to display the widget. </p>    
+<p>Use shortcodes to add a booking widget to a post, page or sidebar. Paste the shortcode where you want to display the widget. </p>    
 <table width="900" cellspacing="0" cellpadding="2" border="1">
 <tbody>
 <tr>
@@ -20,6 +20,10 @@
 <tr>
 <td width="50%">Booking box</td>
 <td>[beds24-box]</td>
+</tr>
+<tr>
+<td width="50%">Booking strip</td>
+<td>[beds24-strip]</td>
 </tr>
 </tbody>
 </table>          
@@ -86,7 +90,7 @@ $options['new'] = 'new window';
 </table>
     
 <h3>Parameters</h3>
-<p>Shortcodes can be customised. This can be useful if you use multiple widgets and want to style them individually. Change the values and enter the parameters into the shortcode. For a complete list of all parameters go to DOKUMENTATION.</p>
+<p>Shortcodes can be customised. This can be useful if you use multiple widgets and want to style each of them individually. Change the values and enter the parameters into the shortcode. For a complete list of all parameters go to DOCUMENTATION.</p>
 <p>Example:  [beds24-button href="http://www.myurl.com"] if you want a booking button opening you embedded booking page.</p>
 <p>Example:  [beds24-box width="320"] sets the width of the booking box to 320px.</p>
 <p>Example: [beds24-box roomid="6661"] will make a booking box for room 6661. </p>
